@@ -1,0 +1,198 @@
+.questions{
+    background:white;
+}
+.answers{
+    background:white;
+}
+.topic-questions{
+    background:white;
+}
+body{
+    background:#F8F8F8;
+    font-family: 'Open Sans';
+}
+.question-description{
+    color:#afafaf;
+}
+.topic-dropdown{
+    background:white;
+    position: relative;
+    width:inherit;
+    border-bottom: 1px solid #eaecef;
+    padding: 5px;
+    font-size: medium;
+    cursor:pointer;
+    
+}
+.topic-dropdown:hover{
+    color:#7aa6ff;
+    background:#f9fbff;
+}
+
+.topic-heading{
+    text-align: center;
+    padding: 5px;
+    font-size: 60px;
+}
+hr{
+    background-color:	#A9A9A9;
+    height:1px;
+}
+.thumbnail img{
+    width:100%;
+}
+.thumbnail{
+    padding:0;
+    border-radius: 10px;
+}
+.profile-pic{
+    border-radius: 50%;
+    width:120px;
+    height:120px;
+}
+.profile-container{
+    width:auto;
+}
+.profile-show{
+    border-radius: 3px;
+    padding:5px;
+    background:white;
+    margin:5px;
+    border:1px solid lightgrey;
+    
+}
+.answer-profile-pic{
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    padding:5px;
+}
+.user-list{
+    color:black;
+}
+.user-list:hover{
+    color:white;
+}
+#loadingmessage img{
+ width:120px;
+ height:120px;
+ 
+}
+.search-box{
+    border-radius:3px;
+    margin:5px;
+}
+.comment{
+    border:none;
+    margin:5px;
+    background:#e8f0ff;
+}
+
+.allcomments{
+    border:none;
+    margin:5px;
+    background:#e8f0ff;
+    float:right;
+}
+.comment-image{
+    border-radius: 50%;
+    width:30px;
+    height: 30px;
+    margin-left:20px;
+    margin-top:20px;
+}
+.comment-text{
+    margin-left:66px;
+    padding-bottom:18px;
+}
+.comment-show{
+    margin-top:10px;
+}
+.each-comment{
+    background:#f9f9f9;
+    
+}
+#comment-input-id{
+    width:500px;
+}
+a:hover{
+    text-decoration: none;
+}
+
+.form-holder{
+    margin-top:5%;
+    margin-bottom:0;
+    width:25%;
+    margin-left:37%;
+    margin-right:37%;
+    background:rgb(219, 221, 224);
+    padding:15px;
+    border-radius:4px;
+    box-shadow: 3px 3px 1px #888888;
+    position: fixed;
+}
+.form-head{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.register-danger{
+    border:1px solid red;
+}
+.register-success{
+    border:1px solid green;
+}
+.bid-image{
+width:100%;
+}
+#slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius:8px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius:50%;
+}
+
+#bidstart{
+    position:absolute;
+    top:300px;
+    left:400px;
+    background:white;
+    width:250px;
+    height:250px;
+    z-index: 1000;
+    word-wrap: break-word;
+}
+.disable{
+    opacity:0.2;    
+}
+
+#gameTimer{
+    width: 20%;
+    margin:auto;
+    color:red;
+    height:20px;
+    font-size: 20px;
+}

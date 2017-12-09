@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <title>AD</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="/javascript/app.js"></script>
+  <script src="/javascript/search.js"></script>
+</head>
+ <body>
+ <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class = "navbar-header">
+            <a class="navbar-brand" href="/">AD</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <%if(!currentUser){%>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+                    <%}else{%>
+                    <li><a href="#"> Hello   <%= currentUser.username %></a></li>
+                <li><a href="/login">Logout</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>
