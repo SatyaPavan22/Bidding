@@ -9,6 +9,7 @@ $(document).ready(function(){
       e.preventDefault();
       var username = $(this).val();
       var value=  $("#myRange").val();
+      //bidTime = 20;
       $.post("/bidspavan",{username:username,value:value},function(res){
           
       });
@@ -53,7 +54,7 @@ function displayWinner(bidData,allitems,ithBid){
 }
 
 function updateData(bidData,boughtItem){
-    console.log("before posting "+boughtItem);
+    console.log("before posting "+bidData);
     $.post("/updatebid",{bidData:bidData,boughtItem:boughtItem},function(res){
         
     });
@@ -77,6 +78,7 @@ function showItem(allitems,ithBid){
 }
 //var ithBid = 0;
 var allitems;
+
 function startBidding(allitems,ithBid){
     showItem(allitems,ithBid);
     var bidTime = 20;
@@ -107,22 +109,25 @@ function startBidding(allitems,ithBid){
         }
     },1000);
 }
- 
-  var countDownDate = new Date("Dec 8, 2017 23:59:00:00").getTime();
+var distance= 0;
+$.get("/date",function(data) {
+     distance = data.remainingTime;
+ });
+  //var countDownDate = new Date("Jan 15, 2018 17:15:30:00").getTime();
 
     var x = setInterval(function() {
 
-  var now = new Date().getTime();
+  //var now = new Date().getTime();
   //console.log(now);
 
   // Find the distance between now an the count down date
-  var distance = countDownDate - now;
-
+  //var distance = countDownDate - now;
+    distance--;
   // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var days = Math.floor(distance / (60 * 60 * 24));
+  var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+  var minutes = Math.floor((distance % (60 * 60)) / (60));
+  var seconds = Math.floor((distance % (60)));
 
   // Display the result in the element with id="demo"
   $("#bidstart").html("");

@@ -10,6 +10,8 @@ var User = require("../models/user"),
     Passport.serializeUser(User.serializeUser());
     Passport.deserializeUser(User.deserializeUser());
     
+    
+    
     router.get("/",function(req,res){
         if(req.user && req.user._id){
             var startTime = new Date("December 1 2017 15:30").getTime();
@@ -35,7 +37,6 @@ var User = require("../models/user"),
            if(err){
                console.log(err);
            } else{
-               console.log(allItems);
                res.status(200).json({allItems:allItems}); 
            }
         }); 
@@ -74,7 +75,6 @@ var User = require("../models/user"),
     });
     
     router.post("/register",function(req,res){
-        console.log(req.body.nickname);
        var newUser = new User({username:req.body.username});
        newUser.nickname = req.body.nickname;
        newUser.save();
@@ -86,7 +86,6 @@ var User = require("../models/user"),
            Passport.authenticate("local")(req,res,function(){
             var newBid = new Bid({username:newUser.username,value:0});
             newBid.save();
-            console.log(newBid);
              res.redirect("/");
            });
          }
@@ -102,6 +101,16 @@ var User = require("../models/user"),
     failureRedirect:"/login"
     }),function(req,res){
     
+  });
+  
+  router.get("/date",function(req, res) {
+   var countDownDate = new Date("Jan 15, 2018 20:43:42:00").getTime();
+    var now = new Date().getTime()+(5.5*60*60*1000); 
+    console.log(now);
+    var diff= (countDownDate-now)/1000;
+    console.log(diff);
+    var remainingTime = Math.floor(diff);
+    res.status(200).json({remainingTime:remainingTime});
   });
   
   router.get("/bids",function(req, res) {
@@ -134,14 +143,16 @@ var User = require("../models/user"),
    
    router.post("/updatebid",function(req, res) {
        if(req.xhr){
-           console.log("is jquery request "+req.xhr);
+           console.log("is jquery request "+req.body.bidData.allBids[0]);
       User.findOne({username:req.body.bidData.allBids[0].username},function(err,foundUser){
           if(err){
               console.log(err);
-          }else{
+          }else if(req.user._id.equals(foundUser._id)){
+              console.log("requested user"+req.user._id.equals(foundUser._id));
+              console.log("found user"+foundUser.username+" "+req.user.username);
               foundUser.amounthas = foundUser.amounthas - req.body.bidData.allBids[0].value;
               Item.findOne({itemname:req.body.boughtItem},function(err, foundItem) {
-                  console.log("item name "+req.body.boughtItem);
+                 
                   if(err){
                       console.log(err);
                   }else{
@@ -150,10 +161,9 @@ var User = require("../models/user"),
                   foundItem.save();
                   foundUser.itemsaquired.push(foundItem);
                   foundUser.save();
+                  console.log(foundUser);
                   }
               });
-          }
-      }) ;
       
         Bid.update({},{value: 0}, {multi: true},function(err){
            if(err){
@@ -163,6 +173,8 @@ var User = require("../models/user"),
            }
         });
         res.status(200).send("success");
+       }
+      });
        }
    });
     

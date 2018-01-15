@@ -7,8 +7,19 @@ var mongoose = require("mongoose"),
               { value:50,
                 images:["homePage4.png"],
                 sold:false,
+                itemname:"laptop"},
+                { value:50,
+                images:["homePage4.png"],
+                sold:false,
+                itemname:"laptop"},
+                 { value:50,
+                images:["homePage4.png"],
+                sold:false,
+                itemname:"laptop"},
+                 { value:50,
+                images:["homePage4.png"],
+                sold:false,
                 itemname:"laptop"}
-                
                 ];
       
       function seedDb(){
